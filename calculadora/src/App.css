@@ -95,6 +95,10 @@ body {
   text-align: right;
   padding: 20px 10px;
   margin-bottom: 10px;
+  min-height: 90px; /* <-- CAMBIO AÑADIDO: Asegura que la pantalla tenga altura */
+  display: flex; /* <-- CAMBIO AÑADIDO: Para alinear el texto verticalmente */
+  align-items: flex-end; /* <-- CAMBIO AÑADIDO: Alinea el número abajo */
+  justify-content: flex-end; /* <-- CAMBIO AÑADIDO: Alinea el número a la derecha */
   /* Para que el texto no se salga */
   overflow: hidden;
   text-overflow: ellipsis;
