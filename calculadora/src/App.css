@@ -59,6 +59,20 @@
   actualizará en todos los lugares donde se use.
 */
 
+/* --- CAMBIO CLAVE --- */
+/* Reseteo de CSS para un comportamiento predecible del layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Aseguramos que los contenedores principales ocupen toda la altura */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
 /* Estilos generales para el cuerpo de la app */
 body {
   background-color: var(--ui-background);
@@ -66,10 +80,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-  padding: 10px; /* Añadimos un pequeño padding al body */
-  box-sizing: border-box; /* Importante para que el padding no afecte el tamaño total */
+  padding: 10px;
 }
 
 /* Contenedor principal de la calculadora */
@@ -81,9 +92,8 @@ body {
   width: 100%;
   max-width: 320px;
   padding: 20px;
-  /* --- CAMBIOS CLAVE --- */
-  background-color: var(--ui-background); /* Le damos el mismo fondo que el body */
-  border-radius: 24px; /* Opcional: para redondear las esquinas del contenedor */
+  background-color: var(--ui-background);
+  border-radius: 24px;
 }
 
 /* Pantalla de resultados */
@@ -95,11 +105,10 @@ body {
   text-align: right;
   padding: 20px 10px;
   margin-bottom: 10px;
-  min-height: 90px; /* <-- CAMBIO AÑADIDO: Asegura que la pantalla tenga altura */
-  display: flex; /* <-- CAMBIO AÑADIDO: Para alinear el texto verticalmente */
-  align-items: flex-end; /* <-- CAMBIO AÑADIDO: Alinea el número abajo */
-  justify-content: flex-end; /* <-- CAMBIO AÑADIDO: Alinea el número a la derecha */
-  /* Para que el texto no se salga */
+  min-height: 90px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -115,7 +124,6 @@ body {
   border-radius: var(--border-radius-button);
   cursor: pointer;
   transition: background-color 0.15s ease-in-out;
-  /* Para que los botones mantengan su forma */
   aspect-ratio: 1 / 1;
 }
 
@@ -149,4 +157,5 @@ body {
   grid-column: span 2;
   justify-content: flex-start; /* Alinea el texto a la izquierda */
   padding-left: 30px;
+  aspect-ratio: auto;
 }
