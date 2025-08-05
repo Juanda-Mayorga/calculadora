@@ -68,6 +68,8 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  padding: 10px; /* Añadimos un pequeño padding al body */
+  box-sizing: border-box; /* Importante para que el padding no afecte el tamaño total */
 }
 
 /* Contenedor principal de la calculadora */
@@ -79,6 +81,9 @@ body {
   width: 100%;
   max-width: 320px;
   padding: 20px;
+  /* --- CAMBIOS CLAVE --- */
+  background-color: var(--ui-background); /* Le damos el mismo fondo que el body */
+  border-radius: 24px; /* Opcional: para redondear las esquinas del contenedor */
 }
 
 /* Pantalla de resultados */
