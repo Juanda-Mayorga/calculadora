@@ -1,0 +1,143 @@
+/* styles.css
+  Este archivo define el sistema de colores y los estilos base.
+  Puedes importarlo en tu componente principal de React (ej. App.js o index.js).
+*/
+
+/* ==========================================================================
+  PASO 1: DEFINIR EL SISTEMA DE COLORES CON VARIABLES CSS
+  ==========================================================================
+  Usamos el selector :root para que estas variables sean globales en todo el proyecto.
+  Los nombres son "semánticos", es decir, describen el propósito del color, 
+  no el color en sí (ej. --color-background en lugar de --color-black).
+  Esto hace que el código sea mucho más fácil de leer y mantener.
+*/
+:root {
+  /* Paleta de Colores Base (Actualizada desde Adobe Colors) */
+  --color-apple-dark-gray: #404040;
+  --color-apple-light-gray: #A6A6A6;
+  --color-apple-orange: #F2913D;
+  --color-apple-background: #0D0D0D;
+  --color-apple-white: #ffffff;
+  --color-apple-black: #0D0D0D;
+
+  /* --- Variables de UI Semánticas --- */
+
+  /* Fondo de la aplicación y pantalla */
+  --ui-background: var(--color-apple-background);
+  --ui-display-text: var(--color-apple-white);
+
+  /* Botones de números y operaciones básicas (punto, igual) */
+  --btn-number-bg: var(--color-apple-dark-gray);
+  --btn-number-text: var(--color-apple-white);
+  --btn-number-bg-hover: #5e5e5e; /* Un poco más claro al pasar el ratón */
+
+  /* Botones de funciones especiales (AC, +/-, %) */
+  --btn-function-bg: var(--color-apple-light-gray);
+  --btn-function-text: var(--color-apple-black);
+  --btn-function-bg-hover: #c0c0c0; /* Un poco más claro al pasar el ratón */
+
+  /* Botones de operadores (+, -, *, /) */
+  --btn-operator-bg: var(--color-apple-orange);
+  --btn-operator-text: var(--color-apple-white);
+  --btn-operator-bg-hover: #f5a154; /* Naranja más claro al pasar el ratón */
+
+  /* Tipografía */
+  --font-family-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-size-display: 4.5rem; /* 72px */
+  --font-size-button: 2rem;   /* 32px */
+
+  /* Otros */
+  --border-radius-button: 9999px; /* Para hacerlos perfectamente redondos */
+}
+
+
+/* ==========================================================================
+  PASO 2: APLICAR EL SISTEMA DE COLORES A LOS COMPONENTES
+  ==========================================================================
+  Aquí usamos las variables que definimos para dar estilo a la calculadora.
+  Si quieres cambiar un color, solo modificas la variable en :root y se
+  actualizará en todos los lugares donde se use.
+*/
+
+/* Estilos generales para el cuerpo de la app */
+body {
+  background-color: var(--ui-background);
+  font-family: var(--font-family-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Contenedor principal de la calculadora */
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto repeat(5, 1fr); /* 1 fila para el display, 5 para botones */
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+  padding: 20px;
+}
+
+/* Pantalla de resultados */
+.display {
+  grid-column: 1 / -1; /* Ocupa todas las columnas */
+  color: var(--ui-display-text);
+  font-size: var(--font-size-display);
+  font-weight: 300;
+  text-align: right;
+  padding: 20px 10px;
+  margin-bottom: 10px;
+  /* Para que el texto no se salga */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Estilo base para todos los botones */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-button);
+  border: none;
+  border-radius: var(--border-radius-button);
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+  /* Para que los botones mantengan su forma */
+  aspect-ratio: 1 / 1;
+}
+
+/* Estilos específicos para cada tipo de botón */
+.btn--number {
+  background-color: var(--btn-number-bg);
+  color: var(--btn-number-text);
+}
+.btn--number:hover {
+  background-color: var(--btn-number-bg-hover);
+}
+
+.btn--function {
+  background-color: var(--btn-function-bg);
+  color: var(--btn-function-text);
+}
+.btn--function:hover {
+  background-color: var(--btn-function-bg-hover);
+}
+
+.btn--operator {
+  background-color: var(--btn-operator-bg);
+  color: var(--btn-operator-text);
+}
+.btn--operator:hover {
+  background-color: var(--btn-operator-bg-hover);
+}
+
+/* Caso especial para el botón "0" que ocupa dos columnas */
+.btn--zero {
+  grid-column: span 2;
+  justify-content: flex-start; /* Alinea el texto a la izquierda */
+  padding-left: 30px;
+}
